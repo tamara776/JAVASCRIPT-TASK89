@@ -129,7 +129,28 @@ onclick = () => {
     editPopup.style.display = "none";
   };
     
-  
+  // Open confirm modal with custom title, message and action
+  const openConfirm = (title, message, action) => {
+    confirmTitle.textContent = title;
+    confirmMessage.textContent = message;
+    confirmAction = action; // function to run when user clicks "Confirm"
+    confirmPopup.style.display = "flex";
+  };
+
+  // Confirm Yes
+  confirmYes.onclick = () => {
+    if (typeof confirmAction === "function") {
+      confirmAction();
+    }
+    confirmPopup.style.display = "none";
+  };
+
+  // Confirm No
+  confirmNo.onclick = () => {
+    confirmPopup.style.display = "none";
+    confirmAction = null;
+  };
+
 
 
 
