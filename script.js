@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Get elements
+  // *********************Get elements********************************
   const taskInput = document.getElementById("taskInput");
   const addTaskButton = document.getElementById("addTaskButton");
   const todoList = document.getElementById("todoList");
