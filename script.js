@@ -25,6 +25,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const confirmYes = document.getElementById("confirmYes");
   const confirmNo = document.getElementById("confirmNo");
 
+
+  // Load tasks from localStorage (or empty array)
+  let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+  // Index of task we are editing
+  let currentEditIndex = null;
+
+  // Current filter: "all" | "done" | "todo"
+  let currentFilter = "all";
+
+  // Function that will run when user clicks "Confirm"
+  let confirmAction = null;
+
+
  
   // Initial render when page opens
   renderTasks();
