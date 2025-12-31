@@ -39,6 +39,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let confirmAction = null;
 
 
+  // Save tasks to localStorage and re-render list
+  const saveTasks = () => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    renderTasks();
+  };
+
+
+
+
  
   // Initial render when page opens
   renderTasks();
