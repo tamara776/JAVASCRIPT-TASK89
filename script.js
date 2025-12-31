@@ -91,7 +91,43 @@ document.addEventListener("DOMContentLoaded", () => {
       };
     });
   };
+  // Add new task
+  addTaskButton.onclick = () => {
+    const value = taskInput.value.trim();
 
+    // Simple validation: no empty, min 5 chars, no numbers
+    if (!value || value.length < 5 || /\d/.test(value)) {
+      errorMessage.textContent = "Task invalid (min 5 chars, no numbers)";
+      return;
+    }
+
+    errorMessage.textContent = "";
+    tasks.push({ name: value, done: false });
+    taskInput.value = "";
+    saveTasks();
+  };
+
+  // Save edited task name
+  saveButton.
+
+onclick = () => {
+    const newName = modalInput.value.trim();
+
+    // Simple validation for edit
+    if (!newName || newName.length < 5 || /\d/.test(newName)) {
+      modalError.textContent = "Task invalid (min 5 chars, no numbers)";
+      return;
+    }
+
+    tasks[currentEditIndex].name = newName;
+    editPopup.style.display = "none";
+    saveTasks();
+  };
+
+  // Close edit modal without saving
+  cancelButton.onclick = () => {
+    editPopup.style.display = "none";
+  };
     
   
 
