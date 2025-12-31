@@ -165,9 +165,39 @@ onclick = () => {
     currentFilter = "todo";
     renderTasks();
   };
+// Delete all done tasks (using custom modal)
+  deleteDoneTasks.onclick = () => {
+    if (!tasks.some(t => t.done)) {
+      alert("No done tasks to delete!");
+      return;
+    }
 
+    openConfirm(
+      "Delete Done Tasks",
+      "Are you sure you want to delete all completed tasks?",
+      () => {
+        tasks = tasks.filter(t => !t.done);
+        saveTasks();
+      }
+    );
+  };
 
+  // Delete all tasks (using custom modal)
+  deleteAllTasks.onclick = () => {
+    if (tasks.length === 0) {
+      alert("No tasks to delete!");
+      return;
+    }
 
+    openConfirm(
+      "Delete All Tasks",
+      "Are you sure you want to delete all tasks?",
+      () => {
+        tasks = [];
+        saveTasks();
+      }
+    );
+  };
 
  
   // Initial render when page opens
