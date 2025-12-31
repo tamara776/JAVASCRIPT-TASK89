@@ -150,6 +150,21 @@ onclick = () => {
     confirmPopup.style.display = "none";
     confirmAction = null;
   };
+// Filter buttons
+  allTasksButton.onclick = () => {
+    currentFilter = "all";
+    renderTasks();
+  };
+
+  doneTasksButton.onclick = () => {
+    currentFilter = "done";
+    renderTasks();
+  };
+
+  todoTasksButton.onclick = () => {
+    currentFilter = "todo";
+    renderTasks();
+  };
 
 
 
