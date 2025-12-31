@@ -72,6 +72,26 @@ document.addEventListener("DOMContentLoaded", () => {
       todoList.appendChild(li);
     });
 
+
+// **************Delete one task***********************
+    document.querySelectorAll(".delete-btn").forEach(btn => {
+      btn.onclick = e => {
+        const index = e.target.dataset.index;
+        tasks.splice(index, 1);
+        saveTasks();
+      };
+    });
+
+    // *******************Checkbox change (done / not done)****************
+    document.querySelectorAll("input[type=checkbox]").forEach(cb => {
+      cb.onchange = e => {
+        const index = e.target.dataset.index;
+        tasks[index].done = e.target.checked;
+        saveTasks();
+      };
+    });
+  };
+
     
   
 
