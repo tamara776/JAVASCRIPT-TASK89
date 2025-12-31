@@ -45,6 +45,64 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTasks();
   };
 
+  // Render tasks according to the current filter
+  const renderTasks = () => {
+    todoList.innerHTML = "";
+
+    let filteredTasks = tasks;
+    if (currentFilter === "done") filteredTasks = tasks.filter(t => t.done);
+    if (currentFilter === "todo") filteredTasks = tasks.filter(t => !t.done);
+
+    filteredTasks.forEach(task => {
+      // Get real index in the original array
+      const index = tasks.indexOf(task);
+
+      const li = document.createElement("li");
+      li.className = "todo-item";
+      li.innerHTML = `
+        <span class="todo-text ${task.done ? "completed" : ""}">
+          ${task.name || task.text}
+        </span>
+        <div>
+          <input type="checkbox" ${task.done ? "checked" : ""} data-index="${index}" />
+          <i class="fa-solid fa-pen edit-btn" data-index="${index}"></i>
+          <i class="fa-solid fa-trash delete-btn" data-index="${index}"></i>
+        </div>
+      `;
+      todoList.appendChild(li);
+    });
+
+    // Edit button click
+    document.querySelectorAll(".edit-btn").forEach(btn => {
+      btn.onclick = e => {
+        currentEditIndex = e.target.dataset.index;
+        modalInput.value =
+          tasks[currentEditIndex].name || tasks[currentEditIndex].text;
+        modalError.textContent = "";
+        editPopup.style.display = "flex";
+      };
+    });
+
+    // Delete one task
+    document.querySelectorAll(".delete-btn").forEach(btn => {
+      btn.onclick = e => {
+        const index = e.target.dataset.index;
+        tasks.splice(index, 1);
+        saveTasks();
+      };
+    });
+
+    // Checkbox change (done / not done)
+    document.querySelectorAll("input[type=checkbox]").forEach(cb => {
+      cb.onchange = e => {
+        const index = e.target.dataset.index;
+        tasks[index].done = e.target.checked;
+        saveTasks();
+      };
+    });
+  };
+
+  
 
 
 
