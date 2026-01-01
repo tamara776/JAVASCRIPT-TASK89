@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo Manager</title>
+  <link rel="stylesheet" href="hh.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+</head>
+<body>
+  <div class="container">
+    <h1>Todo Input</h1>
+    <div class="input-section">
+      <div class="input-container">
+        <span class="todo-icon"><i class="fa-solid fa-book"></i></span>
+        <input type="text" id="taskInput" placeholder="New Task" />
+      </div>
+      <span id="error-message" class="error-message"></span>
+      <button class="add-btn" id="addTaskButton">Add new task</button>
+    </div>
+      <h2>Todo List</h2>
+    <div class="filter-buttons">
+      <button class="filter-btn" id="allTasks">All</button>
+      <button class="filter-btn" id="doneTasks">Done</button>
+      <button class="filter-btn" id="todoTasks">Todo</button>
+    </div>
+       <ul id="todoList"></ul>
+
+    <div class="bottom-buttons">
+      <button class="bottom-delete-btn" id="deleteDoneTasks">Delete Done Tasks</button>
+      <button class="bottom-delete-btn" id="deleteAllTasks">Delete All Tasks</button>
+    </div>
+  </div>
+  <div id="editPopup" class="modal">
+    <div class="modal-content">
+      <h2>Rename Task</h2>
+      <input type="text" id="modalInput" />
+      <span id="modalError" style="color:red; font-size:0.9em"></span>
+      <div class="modal-buttons">
+        <button id="saveButton" class="save-btn">Save</button>
+        <button id="cancelButton" class="cancel-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+   
+  <div id="confirmPopup" class="modal">
+    <div class="modal-content">
+      <h2 id="confirmTitle">Delete Done Tasks</h2>
+      <p id="confirmMessage">
+        Are you sure you want to delete all completed tasks?
+      </p>
+      <div class="modal-buttons">
+        <button id="confirmYes" class="save-btn">Confirm</button>
+        <button id="confirmNo" class="cancel-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
